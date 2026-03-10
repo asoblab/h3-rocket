@@ -629,13 +629,19 @@ export default function Page() {
 /** ロケット画像 */
 function RocketWithFallback() {
   return (
-    <Image
-      src="/images/rocket-illust.png"
-      alt="H3ロケット"
-      width={900}
-      height={1680}
-      style={{ objectFit:"contain", width:"auto", height:1440, maxWidth:840 }}
-      priority
-    />
+    <div style={{
+      position:"relative",
+      width:"100%",
+      height:600,
+      overflow:"hidden",
+    }}>
+      <Image
+        src="/images/rocket-illust.png"
+        alt="H3ロケット"
+        fill
+        style={{ objectFit:"cover", objectPosition:"center 10%" }}
+        priority
+      />
+    </div>
   );
 }
