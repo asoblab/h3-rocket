@@ -31,7 +31,7 @@ function RocketSVG() {
           <stop offset="100%" stopColor="#e0e0e0"/>
         </linearGradient>
         <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#c08040"/>
+          <stop offset="0%" stopColor="var(--tan)"/>
           <stop offset="35%" stopColor="#d4a574"/>
           <stop offset="65%" stopColor="#e0b882"/>
           <stop offset="100%" stopColor="#c89050"/>
@@ -118,7 +118,7 @@ function RocketSVG() {
       ))}
 
       {/* ── H3 ロゴ ── */}
-      <text x="110" y="298" textAnchor="middle" fill="#1a3a6a"
+      <text x="110" y="298" textAnchor="middle" fill="var(--navy)"
         fontSize="22" fontWeight="700" fontFamily="Helvetica Neue, Arial, sans-serif"
         letterSpacing="-0.5">H3</text>
 
@@ -127,12 +127,12 @@ function RocketSVG() {
       <circle cx="110" cy="313.5" r="5.5" fill="#E8002D"/>
 
       {/* JAPAN */}
-      <text x="110" y="334" textAnchor="middle" fill="#1a3a6a"
+      <text x="110" y="334" textAnchor="middle" fill="var(--navy)"
         fontSize="10" fontWeight="600" fontFamily="Helvetica Neue, Arial, sans-serif"
         letterSpacing="2">JAPAN</text>
 
       {/* JAXAロゴ（簡略版） */}
-      <text x="110" y="390" textAnchor="middle" fill="#1a3a6a"
+      <text x="110" y="390" textAnchor="middle" fill="var(--navy)"
         fontSize="9" fontWeight="500" fontFamily="Helvetica Neue, Arial, sans-serif"
         letterSpacing="1.5">JAXA</text>
 
@@ -231,7 +231,7 @@ function OrbitIllustration() {
 
 /** スペックアイコン */
 function SpecIcon({ children }: { children: React.ReactNode }) {
-  return <div style={{ color: "#c08040", marginBottom: 14 }}>{children}</div>;
+  return <div style={{ color: "var(--tan)", marginBottom: 14 }}>{children}</div>;
 }
 
 /* ══════════════════════════════
@@ -276,9 +276,9 @@ export default function Page() {
   const S = {
     container: { maxWidth:1060, margin:"0 auto", padding:"0 36px" } as React.CSSProperties,
     section: { padding:"88px 0" } as React.CSSProperties,
-    eyebrow: { fontSize:"0.68rem", letterSpacing:"0.32em", textTransform:"uppercase" as const, color:"#c08040", fontFamily:"'SF Mono','Fira Code',monospace", marginBottom:16 },
-    h2: { fontSize:"clamp(1.8rem,4vw,2.8rem)", fontWeight:200, letterSpacing:"-0.01em", lineHeight:1.15, color:"var(--ink)" },
-    body: { fontSize:"0.95rem", fontWeight:300, lineHeight:1.9, color:"#555" },
+    eyebrow: { fontSize:"0.68rem", letterSpacing:"0.32em", textTransform:"uppercase" as const, color:"var(--tan)", fontFamily:"'SF Mono','Fira Code',monospace", marginBottom:16 },
+    h2: { fontSize:"clamp(1.8rem,4vw,2.8rem)", fontWeight:200, letterSpacing:"-0.01em", lineHeight:1.15, color:"var(--navy)" },
+    body: { fontSize:"0.95rem", fontWeight:300, lineHeight:1.9, color:"#5a5248" },
   };
 
   return (
@@ -321,6 +321,7 @@ export default function Page() {
               color:"var(--navy)", marginBottom:28,
             }}>H3</h1>
 
+
             <p style={{
               ...S.body,
               fontSize:"clamp(1rem,1.8vw,1.15rem)",
@@ -338,22 +339,22 @@ export default function Page() {
               ].map(({href,label,primary})=>(
                 <a key={href} href={href} style={{
                   padding:"10px 26px",
-                  border: primary ? "1.5px solid var(--tan2)" : "1.5px solid #ccc",
+                  border: primary ? "1.5px solid var(--tan)" : "1.5px solid #ccc",
                   fontSize:"0.76rem", letterSpacing:"0.08em",
-                  color: primary ? "var(--tan2)" : "#666",
+                  color: primary ? "var(--tan)" : "#666",
                   textDecoration:"none",
                   borderRadius:2,
                   transition:"background 0.2s, color 0.2s",
                 }}
                   onMouseEnter={e=>{
-                    e.currentTarget.style.background = primary ? "#c08040" : "#111";
+                    e.currentTarget.style.background = primary ? "var(--tan)" : "#111";
                     e.currentTarget.style.color = "#fff";
-                    e.currentTarget.style.borderColor = primary ? "#c08040" : "#111";
+                    e.currentTarget.style.borderColor = primary ? "var(--tan)" : "#111";
                   }}
                   onMouseLeave={e=>{
                     e.currentTarget.style.background = "";
-                    e.currentTarget.style.color = primary ? "var(--tan2)" : "#666";
-                    e.currentTarget.style.borderColor = primary ? "var(--tan2)" : "#ccc";
+                    e.currentTarget.style.color = primary ? "var(--tan)" : "#666";
+                    e.currentTarget.style.borderColor = primary ? "var(--tan)" : "#ccc";
                   }}
                 >{label}</a>
               ))}
@@ -389,7 +390,7 @@ export default function Page() {
                   letterSpacing:"-0.04em", lineHeight:1, color:"var(--navy)",
                   marginBottom:6,
                 }}>
-                  {v}<span style={{fontSize:"0.42em", color:"var(--tan2)", marginLeft:4}}>{u}</span>
+                  {v}<span style={{fontSize:"0.42em", color:"var(--tan)", marginLeft:4}}>{u}</span>
                 </div>
                 <div style={{fontSize:"0.82rem", fontWeight:500, color:"var(--ink)", marginBottom:4}}>{l}</div>
                 <div className="mono" style={{fontSize:"0.62rem", color:"var(--dim)", letterSpacing:"0.04em"}}>{desc}</div>
@@ -424,7 +425,7 @@ export default function Page() {
                 background:"var(--bg2)",
                 borderLeft:"3px solid var(--tan)",
               }}>
-                <p style={{fontSize:"1rem", fontWeight:300, lineHeight:1.75, color:"#444", fontStyle:"italic"}}>
+                <p style={{fontSize:"1rem", fontWeight:300, lineHeight:1.75, color:"#4a4038", fontStyle:"italic"}}>
                   "失敗はロケット開発の一部だ。<br/>諦めないことが、日本の真骨頂である。"
                 </p>
               </div>
@@ -440,7 +441,7 @@ export default function Page() {
                     <div style={{
                       width:12, height:12, borderRadius:"50%", flexShrink:0,
                       background: h.accent ? "var(--tan)" : "white",
-                      border: h.accent ? "2px solid var(--tan2)" : "2px solid #ccc",
+                      border: h.accent ? "2px solid var(--tan)" : "2px solid #ccc",
                     }}/>
                     {i < HISTORY.length - 1 && (
                       <div style={{width:1, flex:1, background:"var(--line)", marginTop:4}}/>
@@ -449,7 +450,7 @@ export default function Page() {
                   <div style={{paddingBottom:4}}>
                     <p className="mono" style={{
                       fontSize:"0.65rem", letterSpacing:"0.1em",
-                      color: h.accent ? "var(--tan2)" : "var(--dim)",
+                      color: h.accent ? "var(--tan)" : "var(--dim)",
                       marginBottom:5,
                     }}>{h.year}</p>
                     <p style={{
@@ -486,7 +487,7 @@ export default function Page() {
                 background:"var(--bg)", padding:"36px 32px",
                 borderTop:"2px solid var(--tan)",
               }}>
-                <p className="mono" style={{fontSize:"0.65rem", color:"var(--tan2)", letterSpacing:"0.2em", marginBottom:16}}>{t.n}</p>
+                <p className="mono" style={{fontSize:"0.65rem", color:"var(--tan)", letterSpacing:"0.2em", marginBottom:16}}>{t.n}</p>
                 <h3 style={{fontSize:"1.05rem", fontWeight:500, color:"var(--navy)", marginBottom:14, letterSpacing:"0.01em"}}>{t.title}</h3>
                 <p style={{...S.body, fontSize:"0.88rem"}}>{t.body}</p>
               </div>
@@ -536,7 +537,7 @@ export default function Page() {
                     <div style={{fontSize:"0.93rem", fontWeight:400, color:"var(--ink)", marginBottom:3}}>{l.name}</div>
                     <div style={{display:"flex", gap:16, flexWrap:"wrap"}}>
                       <span className="mono" style={{fontSize:"0.65rem", color:"var(--dim)"}}>{l.date}</span>
-                      <span style={{fontSize:"0.8rem", color:"#777"}}>{l.note}</span>
+                      <span style={{fontSize:"0.8rem", color:"#8a7e72"}}>{l.note}</span>
                     </div>
                   </div>
                   <span style={{
@@ -581,16 +582,16 @@ export default function Page() {
                   {l:"サンプル", v:"約 10 g"},
                 ].map(({l,v})=>(
                   <div key={l} style={{padding:"16px 20px", background:"var(--bg)", border:"1px solid var(--line)"}}>
-                    <div className="mono" style={{fontSize:"0.6rem", color:"var(--tan2)", letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:5}}>{l}</div>
+                    <div className="mono" style={{fontSize:"0.6rem", color:"var(--tan)", letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:5}}>{l}</div>
                     <div style={{fontSize:"0.9rem", fontWeight:400, color:"var(--ink)"}}>{v}</div>
                   </div>
                 ))}
               </div>
               <a href="https://www.jaxa.jp/projects/rockets/h3/" target="_blank" rel="noopener" style={{
                 display:"inline-block", padding:"10px 26px",
-                border:"1.5px solid #ccc", borderRadius:2,
+                border:"1.5px solid var(--line)", borderRadius:2,
                 fontSize:"0.76rem", letterSpacing:"0.08em",
-                color:"#666", textDecoration:"none",
+                color:"var(--dim)", textDecoration:"none",
                 transition:"all 0.2s",
               }}
                 onMouseEnter={e=>{e.currentTarget.style.background="#111";e.currentTarget.style.color="#fff";e.currentTarget.style.borderColor="#111"}}
@@ -613,11 +614,11 @@ export default function Page() {
           display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16,
         }}>
           <span className="mono" style={{fontSize:"0.85rem", letterSpacing:"0.4em", fontWeight:400, color:"var(--navy)"}}>H3</span>
-          <p className="mono" style={{fontSize:"0.62rem", color:"#bbb", letterSpacing:"0.04em", textAlign:"center"}}>
+          <p className="mono" style={{fontSize:"0.62rem", color:"#c8bfb4", letterSpacing:"0.04em", textAlign:"center"}}>
             JAXA × 三菱重工業 · 日本の次世代基幹ロケット<br/>
             本サイトはH3ロケットの非公式応援サイトです
           </p>
-          <p className="mono" style={{fontSize:"0.62rem", color:"#bbb"}}>© {new Date().getFullYear()} FAN SITE</p>
+          <p className="mono" style={{fontSize:"0.62rem", color:"#c8bfb4"}}>© {new Date().getFullYear()} FAN SITE</p>
         </div>
       </footer>
 

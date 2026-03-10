@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --red:    #E8002D;
-  --navy:   #1a3a6a;
+  /* イラストから抽出した色 */
+  --tan:    #c89050;   /* ロケット機体のタン/ベージュ */
+  --tan-lt: #e8c898;   /* タン薄め */
+  --navy:   #1a3060;   /* テキスト・ロゴのネイビー */
+  --red:    #E8002D;   /* 日の丸・アクセント */
+
+  /* 背景 — イラストの白に揃える */
+  --bg:     #ffffff;
+  --bg2:    #faf7f2;   /* ごく薄いクリーム（タンの超淡色） */
+  --line:   #e8e2d8;   /* ウォームグレーの罫線 */
+
+  /* テキスト */
   --ink:    #1a1a1a;
-  --dim:    #888888;
-  --line:   #e4e4e0;
-  --bg:     #fafaf8;
-  --bg2:    #f3f2ee;
-  --tan:    #d4a574;
-  --tan2:   #c08040;
+  --dim:    #8a8078;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
