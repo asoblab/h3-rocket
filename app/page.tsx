@@ -625,26 +625,16 @@ export default function Page() {
   );
 }
 
-/** 画像があれば表示、なければSVGフォールバック */
+/** ロケット画像 */
 function RocketWithFallback() {
   return (
-    <div style={{ position:"relative", width:200, height:540 }}>
-      <Image
-        src="/images/rocket-illust.png"
-        alt="H3ロケット"
-        fill
-        style={{ objectFit:"contain", objectPosition:"center" }}
-        onError={(e) => {
-          // 画像がなければ非表示にしてSVGを表示
-          const target = e.currentTarget as HTMLImageElement;
-          target.style.display = "none";
-          const svg = target.nextSibling as HTMLElement;
-          if (svg) svg.style.display = "flex";
-        }}
-      />
-      <div style={{ display:"flex", justifyContent:"center", alignItems:"center", width:"100%", height:"100%" }}>
-        <RocketSVG/>
-      </div>
-    </div>
+    <Image
+      src="/images/rocket-illust.png"
+      alt="H3ロケット"
+      width={300}
+      height={560}
+      style={{ objectFit:"contain", width:"auto", height:480, maxWidth:280 }}
+      priority
+    />
   );
 }
