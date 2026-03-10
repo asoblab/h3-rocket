@@ -309,7 +309,7 @@ export default function Page() {
 
       {/* ══ HERO ══ */}
       <section style={{ ...S.section, paddingTop:72, paddingBottom:80 }}>
-        <div style={{ ...S.container, display:"grid", gridTemplateColumns:"1fr auto", gap:48, alignItems:"center" }}>
+        <div style={{ ...S.container, display:"grid", gridTemplateColumns:"1fr 1fr", gap:48, alignItems:"center" }}>
 
           {/* テキスト */}
           <div style={{ animation:"fadeUp 0.9s ease both" }}>
@@ -631,9 +631,9 @@ function RocketWithFallback() {
     <Image
       src="/images/rocket-illust.png"
       alt="H3ロケット"
-      width={300}
-      height={560}
-      style={{ objectFit:"contain", width:"auto", height:480, maxWidth:280 }}
+      width={900}
+      height={1680}
+      style={{ objectFit:"contain", width:"auto", height:1440, maxWidth:840 }}
       priority
     />
   );
