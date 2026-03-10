@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --red:   #E8002D;
-  --ink:   #111111;
-  --dim:   #767676;
-  --line:  #e8e8e8;
-  --bg:    #ffffff;
-  --bg2:   #f8f8f6;
+  --red:    #E8002D;
+  --navy:   #1a3a6a;
+  --ink:    #1a1a1a;
+  --dim:    #888888;
+  --line:   #e4e4e0;
+  --bg:     #fafaf8;
+  --bg2:    #f3f2ee;
+  --tan:    #d4a574;
+  --tan2:   #c08040;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,10 +24,9 @@ body {
 
 .mono { font-family: "SF Mono", "Fira Code", monospace; }
 
-/* reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(20px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.show { opacity: 1; transform: none; }

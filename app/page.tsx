@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 
-/* ─── scroll reveal ─── */
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
@@ -16,182 +16,222 @@ function useReveal() {
 }
 
 /* ══════════════════════════════
-   ILLUSTRATIONS
+   SVG ILLUSTRATIONS
 ══════════════════════════════ */
 
-/** ロケット全体図 */
-function RocketIllustration() {
+/** H3ロケット — イラスト風カラー（実写真の代替） */
+function RocketSVG() {
   return (
-    <svg viewBox="0 0 200 520" fill="none" xmlns="http://www.w3.org/2000/svg"
-      style={{ width: "100%", maxWidth: 160, height: "auto" }}>
-
-      {/* ── SRB 左 ── */}
-      <path d="M 38 200 L 40 155 Q 41 145 44 145 Q 47 145 48 155 L 50 200 L 50 365 Q 48 375 46 380 L 46 395 L 54 395 L 54 380 Q 52 375 50 365 L 50 200" fill="#f0f0f0" stroke="#bbb" strokeWidth="1"/>
-      <path d="M 44 145 Q 46 128 48 145" fill="#e0e0e0" stroke="#bbb" strokeWidth="1"/>
-      <path d="M 46 395 Q 42 410 40 425 L 60 425 Q 58 410 54 395 Z" fill="#e8e8e8" stroke="#bbb" strokeWidth="1"/>
-      <line x1="40" y1="310" x2="60" y2="310" stroke="#E8002D" strokeWidth="1.5"/>
-
-      {/* ── SRB 右 ── */}
-      <path d="M 150 200 L 152 155 Q 153 145 156 145 Q 159 145 160 155 L 162 200 L 162 365 Q 160 375 158 380 L 158 395 L 166 395 L 166 380 Q 164 375 162 365 L 162 200" fill="#f0f0f0" stroke="#bbb" strokeWidth="1"/>
-      <path d="M 156 145 Q 158 128 160 145" fill="#e0e0e0" stroke="#bbb" strokeWidth="1"/>
-      <path d="M 158 395 Q 154 410 152 425 L 172 425 Q 170 410 166 395 Z" fill="#e8e8e8" stroke="#bbb" strokeWidth="1"/>
-      <line x1="152" y1="310" x2="172" y2="310" stroke="#E8002D" strokeWidth="1.5"/>
+    <svg viewBox="0 0 220 600" fill="none" xmlns="http://www.w3.org/2000/svg"
+      style={{ width: "100%", maxWidth: 200, height: "auto" }}>
+      <defs>
+        <linearGradient id="fairingG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#d8d8d8"/>
+          <stop offset="40%" stopColor="#f5f5f5"/>
+          <stop offset="100%" stopColor="#e0e0e0"/>
+        </linearGradient>
+        <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#c08040"/>
+          <stop offset="35%" stopColor="#d4a574"/>
+          <stop offset="65%" stopColor="#e0b882"/>
+          <stop offset="100%" stopColor="#c89050"/>
+        </linearGradient>
+        <linearGradient id="srbG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#cccccc"/>
+          <stop offset="50%" stopColor="#f0f0f0"/>
+          <stop offset="100%" stopColor="#d8d8d8"/>
+        </linearGradient>
+        <linearGradient id="ringG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#aaaaaa"/>
+          <stop offset="50%" stopColor="#dddddd"/>
+          <stop offset="100%" stopColor="#b8b8b8"/>
+        </linearGradient>
+        <linearGradient id="engineG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#888"/>
+          <stop offset="100%" stopColor="#555"/>
+        </linearGradient>
+      </defs>
 
       {/* ── フェアリング ── */}
-      <path d="M 82 14 Q 100 4 118 14 L 126 52 L 126 80 L 74 80 L 74 52 Z" fill="#f5f5f5" stroke="#ccc" strokeWidth="1.2"/>
-      <line x1="74" y1="80" x2="126" y2="80" stroke="#E8002D" strokeWidth="1.2"/>
+      <path d="M 90 12 Q 110 2 130 12 L 138 52 L 138 88 L 82 88 L 82 52 Z"
+        fill="url(#fairingG)" stroke="#c0c0c0" strokeWidth="1"/>
+      {/* フェアリング先端 */}
+      <path d="M 100 28 Q 110 16 120 28 L 124 44 L 96 44 Z"
+        fill="#e8e8e8" stroke="#c8c8c8" strokeWidth="0.8"/>
+      {/* フェアリングパネルライン */}
+      <line x1="110" y1="18" x2="110" y2="86" stroke="rgba(0,0,0,0.08)" strokeWidth="0.7"/>
+      <line x1="95" y1="52" x2="125" y2="52" stroke="rgba(0,0,0,0.08)" strokeWidth="0.7"/>
+      {/* 小窓 */}
+      <rect x="105" y="62" width="10" height="8" rx="1.5" fill="#d0d8e0" stroke="#b0b8c0" strokeWidth="0.7"/>
+
+      {/* ── リング1（フェアリング/2段の間） ── */}
+      <rect x="80" y="88" width="60" height="10" rx="1" fill="url(#ringG)" stroke="#aaa" strokeWidth="0.8"/>
 
       {/* ── 第2段 ── */}
-      <rect x="74" y="80" width="52" height="115" fill="#efefef" stroke="#ccc" strokeWidth="1.2"/>
-      <line x1="72" y1="195" x2="128" y2="195" stroke="#E8002D" strokeWidth="1.5"/>
+      <rect x="84" y="98" width="52" height="95" fill="url(#fairingG)" stroke="#c0c0c0" strokeWidth="1"/>
+      <line x1="110" y1="100" x2="110" y2="192" stroke="rgba(0,0,0,0.06)" strokeWidth="0.7"/>
+      <line x1="86" y1="140" x2="134" y2="140" stroke="rgba(0,0,0,0.08)" strokeWidth="0.7"/>
 
-      {/* ── 第1段 ── */}
-      <rect x="68" y="197" width="64" height="185" fill="#ebebeb" stroke="#ccc" strokeWidth="1.2"/>
-      {[245, 290, 340].map(y => (
-        <line key={y} x1="68" y1={y} x2="132" y2={y} stroke="#ddd" strokeWidth="0.7"/>
+      {/* ── リング2（段間部） ── */}
+      <rect x="78" y="193" width="64" height="14" rx="1.5" fill="url(#ringG)" stroke="#aaa" strokeWidth="1"/>
+      {/* リング2のコネクタ */}
+      {[88, 100, 120, 132].map(x => (
+        <rect key={x} x={x} y="196" width="5" height="8" rx="1" fill="#bbb" stroke="#aaa" strokeWidth="0.5"/>
       ))}
 
-      {/* ── エンジン部 ── */}
-      <path d="M 68 382 L 60 394 L 60 402 L 140 402 L 140 394 L 132 382 Z" fill="#e0e0e0" stroke="#ccc" strokeWidth="1"/>
+      {/* ── SRB 左 ── */}
+      <g>
+        {/* SRB本体 */}
+        <path d="M 42 248 L 44 210 Q 46 198 50 198 Q 54 198 56 210 L 58 248 L 58 395 Q 56 405 54 412 L 46 412 Q 44 405 42 395 Z"
+          fill="url(#srbG)" stroke="#c0c0c0" strokeWidth="1"/>
+        {/* SRBキャップ */}
+        <path d="M 50 198 Q 50 186 50 180 L 50 198" stroke="#c8c8c8" strokeWidth="0" fill="none"/>
+        <ellipse cx="50" cy="198" rx="6" ry="10" fill="#e8e8e8" stroke="#c0c0c0" strokeWidth="1"/>
+        <path d="M 44 188 Q 50 178 56 188" fill="#d8d8d8" stroke="#c0c0c0" strokeWidth="0.8"/>
+        {/* SRBノズル */}
+        <path d="M 44 412 Q 40 425 38 440 L 62 440 Q 60 425 56 412 Z"
+          fill="url(#engineG)" stroke="#888" strokeWidth="1"/>
+        <ellipse cx="50" cy="440" rx="12" ry="4" fill="none" stroke="#666" strokeWidth="1"/>
+        {/* SRBの赤帯 */}
+        <rect x="42" y="350" width="16" height="6" rx="1" fill="#E8002D" opacity="0.7"/>
+      </g>
 
-      {/* ── LE-9 ノズル ── */}
-      {[88, 112].map((cx, i) => (
+      {/* ── SRB 右 ── */}
+      <g>
+        <path d="M 162 248 L 164 210 Q 166 198 170 198 Q 174 198 176 210 L 178 248 L 178 395 Q 176 405 174 412 L 166 412 Q 164 405 162 395 Z"
+          fill="url(#srbG)" stroke="#c0c0c0" strokeWidth="1"/>
+        <ellipse cx="170" cy="198" rx="6" ry="10" fill="#e8e8e8" stroke="#c0c0c0" strokeWidth="1"/>
+        <path d="M 164 188 Q 170 178 176 188" fill="#d8d8d8" stroke="#c0c0c0" strokeWidth="0.8"/>
+        <path d="M 164 412 Q 160 425 158 440 L 182 440 Q 180 425 176 412 Z"
+          fill="url(#engineG)" stroke="#888" strokeWidth="1"/>
+        <ellipse cx="170" cy="440" rx="12" ry="4" fill="none" stroke="#666" strokeWidth="1"/>
+        <rect x="162" y="350" width="16" height="6" rx="1" fill="#E8002D" opacity="0.7"/>
+      </g>
+
+      {/* ── 第1段（メイン） ── */}
+      <rect x="70" y="207" width="80" height="215" fill="url(#bodyG)" stroke="#b07838" strokeWidth="1"/>
+
+      {/* 第1段パネルライン */}
+      <line x1="110" y1="209" x2="110" y2="420" stroke="rgba(0,0,0,0.07)" strokeWidth="0.8"/>
+      {[250, 295, 340].map(y => (
+        <line key={y} x1="70" y1={y} x2="150" y2={y} stroke="rgba(0,0,0,0.08)" strokeWidth="0.6"/>
+      ))}
+
+      {/* ── H3 ロゴ ── */}
+      <text x="110" y="298" textAnchor="middle" fill="#1a3a6a"
+        fontSize="22" fontWeight="700" fontFamily="Helvetica Neue, Arial, sans-serif"
+        letterSpacing="-0.5">H3</text>
+
+      {/* 日の丸 */}
+      <rect x="97" y="305" width="26" height="17" rx="1.5" fill="white" stroke="#e0e0e0" strokeWidth="0.7"/>
+      <circle cx="110" cy="313.5" r="5.5" fill="#E8002D"/>
+
+      {/* JAPAN */}
+      <text x="110" y="334" textAnchor="middle" fill="#1a3a6a"
+        fontSize="10" fontWeight="600" fontFamily="Helvetica Neue, Arial, sans-serif"
+        letterSpacing="2">JAPAN</text>
+
+      {/* JAXAロゴ（簡略版） */}
+      <text x="110" y="390" textAnchor="middle" fill="#1a3a6a"
+        fontSize="9" fontWeight="500" fontFamily="Helvetica Neue, Arial, sans-serif"
+        letterSpacing="1.5">JAXA</text>
+
+      {/* ── エンジン下部リング ── */}
+      <rect x="68" y="422" width="84" height="12" rx="1.5" fill="url(#ringG)" stroke="#aaa" strokeWidth="1"/>
+
+      {/* ── LE-9 エンジン × 2 ── */}
+      {[90, 130].map((cx, i) => (
         <g key={i}>
-          <path d={`M ${cx - 10} 402 Q ${cx - 14} 422 ${cx - 17} 440 L ${cx + 17} 440 Q ${cx + 14} 422 ${cx + 10} 402 Z`}
-            fill="#e8e8e8" stroke="#bbb" strokeWidth="1"/>
-          <ellipse cx={cx} cy="440" rx="17" ry="4.5" fill="none" stroke="#E8002D" strokeWidth="1"/>
+          <path d={`M ${cx-12} 434 Q ${cx-15} 454 ${cx-18} 472 L ${cx+18} 472 Q ${cx+15} 454 ${cx+12} 434 Z`}
+            fill="url(#engineG)" stroke="#777" strokeWidth="1"/>
+          <ellipse cx={cx} cy="472" rx="18" ry="5" fill="#444" stroke="#666" strokeWidth="0.8"/>
+          {/* ノズル内側 */}
+          <ellipse cx={cx} cy="471" rx="13" ry="3.5" fill="#333"/>
         </g>
       ))}
 
       {/* ── 炎 ── */}
-      <path d="M 72 440 Q 88 480 100 500 Q 112 480 128 440 Z"
-        fill="#E8002D" opacity="0.15"/>
-      <path d="M 78 440 Q 88 472 100 490 Q 112 472 122 440 Z"
-        fill="#E8002D" opacity="0.25"/>
+      <path d="M 74 472 Q 90 510 110 530 Q 130 510 146 472 Z" fill="#E8002D" opacity="0.12"/>
+      <path d="M 80 472 Q 90 504 110 520 Q 130 504 140 472 Z" fill="#E8002D" opacity="0.2"/>
+      <path d="M 84 472 Q 92 500 110 515 Q 128 500 136 472 Z" fill="#ff8020" opacity="0.15"/>
 
-      {/* ── SRB 炎 ── */}
-      <path d="M 43 425 Q 50 448 53 460 Q 56 448 63 425 Z" fill="#E8002D" opacity="0.15"/>
-      <path d="M 155 425 Q 162 448 165 460 Q 168 448 175 425 Z" fill="#E8002D" opacity="0.15"/>
+      {/* SRB炎 */}
+      <path d="M 40 440 Q 50 462 50 475 Q 50 462 60 440 Z" fill="#E8002D" opacity="0.15"/>
+      <path d="M 160 440 Q 170 462 170 475 Q 170 462 180 440 Z" fill="#E8002D" opacity="0.15"/>
 
-      {/* ── 中心線 ── */}
-      <line x1="100" y1="0" x2="100" y2="520"
-        stroke="#E8002D" strokeWidth="0.5" strokeDasharray="4 4" opacity="0.3"/>
+      {/* ── SRB接続アーム ── */}
+      <line x1="58" y1="280" x2="70" y2="295" stroke="#aaa" strokeWidth="2" strokeLinecap="round"/>
+      <line x1="162" y1="280" x2="150" y2="295" stroke="#aaa" strokeWidth="2" strokeLinecap="round"/>
+      <line x1="58" y1="360" x2="70" y2="370" stroke="#aaa" strokeWidth="2" strokeLinecap="round"/>
+      <line x1="162" y1="360" x2="150" y2="370" stroke="#aaa" strokeWidth="2" strokeLinecap="round"/>
     </svg>
   );
 }
 
-/** タイムライン用アイコン */
-function DotIcon({ accent }: { accent?: boolean }) {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <circle cx="7" cy="7" r="6" stroke={accent ? "#E8002D" : "#ccc"} strokeWidth="1.5"
-        fill={accent ? "#E8002D" : "white"}/>
-    </svg>
-  );
-}
-
-/** 軌道イラスト（Future用） */
+/** 軌道イラスト */
 function OrbitIllustration() {
   return (
-    <svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg"
+    <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg"
       style={{ width: "100%", height: "auto" }}>
       <defs>
         <style>{`
-          @keyframes spin1 { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-          @keyframes spin2 { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
-          .sp1 { animation: spin1 18s linear infinite; transform-origin: 120px 160px; }
-          .sp2 { animation: spin2 9s linear infinite; transform-origin: 300px 160px; }
+          @keyframes sp1 { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+          @keyframes sp2 { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+          .orb1 { animation: sp1 18s linear infinite; transform-origin: 110px 150px; }
+          .orb2 { animation: sp2 9s linear infinite; transform-origin: 320px 150px; }
         `}</style>
       </defs>
 
-      {/* 太陽（左外） */}
-      <circle cx="30" cy="160" r="22" fill="#fff5e0" stroke="#f0d060" strokeWidth="1.5"/>
-      <text x="30" y="164" textAnchor="middle" fill="#c09020" fontSize="7" fontFamily="monospace">SUN</text>
+      {/* 太陽 */}
+      <circle cx="28" cy="150" r="20" fill="#fff8e0" stroke="#e8c840" strokeWidth="1.5"/>
+      <text x="28" y="154" textAnchor="middle" fill="#b09020" fontSize="7" fontFamily="monospace">SUN</text>
 
       {/* 地球軌道 */}
-      <ellipse cx="120" cy="160" rx="52" ry="20"
-        fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
+      <ellipse cx="110" cy="150" rx="50" ry="18" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
       {/* 地球 */}
-      <circle cx="120" cy="160" r="18" fill="#dce8ff" stroke="#88aadd" strokeWidth="1.2"/>
-      <text x="120" y="164" textAnchor="middle" fill="#3355aa" fontSize="7" fontFamily="monospace">EARTH</text>
+      <circle cx="110" cy="150" r="16" fill="#dce8ff" stroke="#7799cc" strokeWidth="1.2"/>
+      <text x="110" y="154" textAnchor="middle" fill="#3355aa" fontSize="7" fontFamily="monospace">EARTH</text>
       {/* 月 */}
-      <g className="sp1">
-        <circle cx="172" cy="160" r="6" fill="#f0f0f0" stroke="#bbb" strokeWidth="1"/>
+      <g className="orb1">
+        <circle cx="160" cy="150" r="5" fill="#f0f0f0" stroke="#bbb" strokeWidth="1"/>
       </g>
 
       {/* ホーマン遷移軌道 */}
-      <path d="M 120 140 Q 210 30 300 120" fill="none"
-        stroke="#E8002D" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.6"/>
-      <polygon points="295,116 305,123 294,128" fill="#E8002D" opacity="0.6"/>
+      <path d="M 110 133 Q 215 38 320 118" fill="none"
+        stroke="#E8002D" strokeWidth="1.5" strokeDasharray="6 4" opacity="0.55"/>
+      <polygon points="316,113 326,121 314,126" fill="#E8002D" opacity="0.55"/>
 
       {/* 火星軌道 */}
-      <ellipse cx="300" cy="160" rx="78" ry="30"
-        fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
+      <ellipse cx="320" cy="150" rx="80" ry="28" fill="none" stroke="#ddd" strokeWidth="1" strokeDasharray="4 3"/>
       {/* 火星 */}
-      <circle cx="300" cy="160" r="22" fill="#ffe0d5" stroke="#cc6644" strokeWidth="1.2"/>
-      <text x="300" y="164" textAnchor="middle" fill="#993322" fontSize="7" fontFamily="monospace">MARS</text>
+      <circle cx="320" cy="150" r="20" fill="#ffe0d0" stroke="#cc6644" strokeWidth="1.2"/>
+      <text x="320" y="154" textAnchor="middle" fill="#993322" fontSize="7" fontFamily="monospace">MARS</text>
       {/* フォボス */}
-      <g className="sp2">
-        <ellipse cx="378" cy="160" rx="7" ry="5" fill="#e8e0d8" stroke="#bbb" strokeWidth="1"/>
-        <text x="386" y="148" fill="#998877" fontSize="6.5" fontFamily="monospace">PHOBOS</text>
+      <g className="orb2">
+        <ellipse cx="400" cy="150" rx="7" ry="5" fill="#e8e0d8" stroke="#bbb" strokeWidth="1"/>
+        <text x="410" y="138" fill="#998877" fontSize="6.5" fontFamily="monospace">PHOBOS</text>
       </g>
 
       {/* MMX探査機 */}
-      <g transform="translate(210,80)">
-        <rect x="-6" y="-4" width="12" height="8" rx="1" fill="#555" stroke="#333" strokeWidth="0.8"/>
-        <rect x="-18" y="-2" width="10" height="4" rx="0.5" fill="#88aacc" stroke="#668899" strokeWidth="0.6"/>
-        <rect x="8" y="-2" width="10" height="4" rx="0.5" fill="#88aacc" stroke="#668899" strokeWidth="0.6"/>
-        <text x="0" y="18" textAnchor="middle" fill="#E8002D" fontSize="7" fontFamily="monospace">MMX</text>
+      <g transform="translate(218,72)">
+        <rect x="-6" y="-4" width="12" height="8" rx="1" fill="#555"/>
+        <rect x="-18" y="-2" width="11" height="4" rx="0.5" fill="#7799bb" stroke="#5577aa" strokeWidth="0.6"/>
+        <rect x="7" y="-2" width="11" height="4" rx="0.5" fill="#7799bb" stroke="#5577aa" strokeWidth="0.6"/>
+        <text x="0" y="18" textAnchor="middle" fill="#E8002D" fontSize="7.5" fontFamily="monospace" fontWeight="bold">MMX</text>
       </g>
 
       {/* 凡例 */}
-      <line x1="360" y1="20" x2="380" y2="20" stroke="#E8002D" strokeWidth="1.2" strokeDasharray="5 3" opacity="0.6"/>
-      <text x="385" y="24" fill="#888" fontSize="8" fontFamily="monospace">Transfer orbit</text>
-      <line x1="360" y1="36" x2="380" y2="36" stroke="#ccc" strokeWidth="1" strokeDasharray="4 3"/>
-      <text x="385" y="40" fill="#888" fontSize="8" fontFamily="monospace">Orbit</text>
+      <line x1="380" y1="16" x2="400" y2="16" stroke="#E8002D" strokeWidth="1.2" strokeDasharray="5 3" opacity="0.6"/>
+      <text x="405" y="20" fill="#888" fontSize="8" fontFamily="monospace">Transfer orbit</text>
+      <line x1="380" y1="30" x2="400" y2="30" stroke="#ccc" strokeWidth="1" strokeDasharray="4 3"/>
+      <text x="405" y="34" fill="#888" fontSize="8" fontFamily="monospace">Orbit</text>
     </svg>
   );
 }
 
-/** スペックカード用アイコン群 */
-function IconHeight() {
-  return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <line x1="20" y1="4" x2="20" y2="36" stroke="#E8002D" strokeWidth="2"/>
-      <line x1="14" y1="4" x2="26" y2="4" stroke="#E8002D" strokeWidth="2"/>
-      <line x1="14" y1="36" x2="26" y2="36" stroke="#E8002D" strokeWidth="2"/>
-      <text x="20" y="23" textAnchor="middle" fill="#111" fontSize="9" fontFamily="monospace">H</text>
-    </svg>
-  );
-}
-function IconWeight() {
-  return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="16" r="9" stroke="#E8002D" strokeWidth="2" fill="none"/>
-      <line x1="20" y1="25" x2="20" y2="32" stroke="#E8002D" strokeWidth="2"/>
-      <line x1="10" y1="32" x2="30" y2="32" stroke="#E8002D" strokeWidth="2"/>
-      <line x1="10" y1="28" x2="10" y2="36" stroke="#E8002D" strokeWidth="1.5"/>
-      <line x1="30" y1="28" x2="30" y2="36" stroke="#E8002D" strokeWidth="1.5"/>
-    </svg>
-  );
-}
-function IconPayload() {
-  return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <rect x="10" y="14" width="20" height="18" rx="2" stroke="#E8002D" strokeWidth="2" fill="none"/>
-      <path d="M 14 14 L 14 10 Q 14 8 16 8 L 24 8 Q 26 8 26 10 L 26 14" stroke="#E8002D" strokeWidth="2" fill="none"/>
-      <line x1="10" y1="22" x2="30" y2="22" stroke="#E8002D" strokeWidth="1.5"/>
-    </svg>
-  );
-}
-function IconCost() {
-  return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="20" r="13" stroke="#E8002D" strokeWidth="2" fill="none"/>
-      <text x="20" y="25" textAnchor="middle" fill="#E8002D" fontSize="14" fontWeight="300">¥</text>
-      <line x1="28" y1="12" x2="12" y2="28" stroke="#E8002D" strokeWidth="1.5" strokeDasharray="3 2"/>
-    </svg>
-  );
+/** スペックアイコン */
+function SpecIcon({ children }: { children: React.ReactNode }) {
+  return <div style={{ color: "#c08040", marginBottom: 14 }}>{children}</div>;
 }
 
 /* ══════════════════════════════
@@ -212,62 +252,51 @@ export default function Page() {
   ];
 
   const HISTORY = [
-    { year:"2014", text:"開発正式決定。予算約2,000億円。三菱重工がプライム契約社に。" },
-    { year:"2017", text:"LE-9エンジン燃焼試験開始。エキスパンダーブリードサイクルに初挑戦。" },
-    { year:"2020", text:"タービンブレード亀裂を発見。設計を抜本的に見直し全面再設計へ。" },
-    { year:"2023.02", text:"初の打ち上げ試み。直前に電気系統の問題で中止。" },
-    { year:"2023.03", text:"試験機1号機、第2段エンジン不着火。「だいち3号」喪失。指令破壊。" },
-    { year:"2024.02", text:"試験機2号機、同じ2月17日に軌道投入に成功。H3、初の快挙。", accent: true },
-    { year:"2024〜",  text:"F3・F4・F5・F7と連続成功。日本の宇宙インフラとして本格稼働。", accent: true },
-  ];
-
-  const SPECS = [
-    { icon: <IconHeight/>,  value:"63",  unit:"m",   label:"全高" },
-    { icon: <IconWeight/>,  value:"574", unit:"t",   label:"離昇重量" },
-    { icon: <IconPayload/>, value:"6.5", unit:"t",   label:"GTO 投入能力" },
-    { icon: <IconCost/>,    value:"50",  unit:"%削減", label:"打ち上げコスト削減目標" },
+    { year:"2014",   text:"開発正式決定。予算約2,000億円。三菱重工がプライム契約社に。" },
+    { year:"2017",   text:"LE-9エンジン燃焼試験開始。エキスパンダーブリードサイクルに世界初挑戦。" },
+    { year:"2020",   text:"タービンブレード亀裂を発見。設計を抜本的に見直し全面再設計へ。" },
+    { year:"2023.02",text:"初の打ち上げ試み。直前に電気系統の問題で中止。" },
+    { year:"2023.03",text:"試験機1号機、第2段エンジン不着火。「だいち3号」喪失。指令破壊。" },
+    { year:"2024.02",text:"試験機2号機、同じ2月17日に軌道投入に成功。H3、初の快挙。", accent:true },
+    { year:"2024〜", text:"F3・F4・F5・F7と連続成功。日本の宇宙インフラとして本格稼働。", accent:true },
   ];
 
   const TECH = [
-    {
-      title:"LE-9 エンジン",
-      body:"エキスパンダーブリードサイクルを大型エンジンに世界初採用。補助燃焼器をなくし、部品点数を20%削減。3Dプリンティングで複数部品を一体化。推力147 tf、比推力426秒。",
-    },
-    {
-      title:"民生グレード部品",
-      body:"全部品の約90%に一般産業向け部品を採用。宇宙専用規格の呪縛を解き放ち、村田製作所などの量産技術を活用。コストと品質を同時に改善する調達革命。",
-    },
-    {
-      title:"柔軟な打ち上げ構成",
-      body:"H3-22S、H3-30S、H3-24L など6種類以上の構成を用意。LE-9を2〜3基、SRB-3を0〜4本の組み合わせで、低軌道から月遷移軌道まで幅広い用途に対応。",
-    },
+    { n:"01", title:"LE-9 エンジン",    body:"エキスパンダーブリードサイクルを大型エンジンに世界初採用。補助燃焼器をなくし部品点数を20%削減。3Dプリンティングで複数部品を一体化。推力147 tf、比推力426秒。" },
+    { n:"02", title:"民生グレード部品", body:"全部品の約90%に一般産業向け部品を採用。宇宙専用規格の呪縛を解き放ち、村田製作所などの量産技術を活用。コストと品質を同時に改善する調達革命。" },
+    { n:"03", title:"柔軟な打ち上げ構成",body:"H3-22S/H3-30S/H3-24L など6種類以上の構成。LE-9を2〜3基、SRB-3を0〜4本の組み合わせで低軌道から月遷移軌道まで対応。" },
   ];
 
-  const resultStyle = (r: string) => {
-    if (r === "success") return { color: "#1a7a45", background: "#e8f5ee", border:"1px solid #b8e0c8" };
-    if (r === "abort")   return { color: "#7a5a00", background: "#fff8e0", border:"1px solid #e8d870" };
-    return { color: "#c00020", background: "#fff0f2", border:"1px solid #f0b8c0" };
+  const resultBadge = (r: string) => {
+    if (r === "success") return { color:"#1a6a3a", bg:"#eaf5ee", border:"1px solid #b8ddc8", label:"成功" };
+    if (r === "abort")   return { color:"#7a5500", bg:"#fff8e0", border:"1px solid #e0cc70", label:"中止" };
+    return { color:"#b00020", bg:"#fff0f2", border:"1px solid #f0b8c0", label:"失敗" };
   };
 
-  const resultLabel = (r: string) => r === "success" ? "成功" : r === "abort" ? "中止" : "失敗";
+  const S = {
+    container: { maxWidth:1060, margin:"0 auto", padding:"0 36px" } as React.CSSProperties,
+    section: { padding:"88px 0" } as React.CSSProperties,
+    eyebrow: { fontSize:"0.68rem", letterSpacing:"0.32em", textTransform:"uppercase" as const, color:"#c08040", fontFamily:"'SF Mono','Fira Code',monospace", marginBottom:16 },
+    h2: { fontSize:"clamp(1.8rem,4vw,2.8rem)", fontWeight:200, letterSpacing:"-0.01em", lineHeight:1.15, color:"var(--ink)" },
+    body: { fontSize:"0.95rem", fontWeight:300, lineHeight:1.9, color:"#555" },
+  };
 
   return (
-    <div style={{ background: "var(--bg)" }}>
+    <div style={{ background:"var(--bg)" }}>
 
-      {/* ══════ NAV ══════ */}
+      {/* ══ NAV ══ */}
       <header style={{
         position:"sticky", top:0, zIndex:100,
-        background:"rgba(255,255,255,0.95)", backdropFilter:"blur(12px)",
+        background:"rgba(250,250,248,0.95)", backdropFilter:"blur(12px)",
         borderBottom:"1px solid var(--line)",
       }}>
-        <div style={{maxWidth:1100, margin:"0 auto", padding:"0 32px",
-          height:56, display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-          <span className="mono" style={{fontSize:"0.95rem", letterSpacing:"0.4em", fontWeight:300}}>H3</span>
-          <nav style={{display:"flex", gap:32}}>
+        <div style={{...S.container, height:54, display:"flex", alignItems:"center", justifyContent:"space-between"}}>
+          <span className="mono" style={{fontSize:"0.9rem", letterSpacing:"0.45em", fontWeight:400, color:"var(--navy)"}}>H3</span>
+          <nav style={{display:"flex", gap:28}}>
             {[["#story","沿革"],["#tech","技術"],["#launches","記録"],["#future","未来"]].map(([href,label])=>(
               <a key={href} href={href} style={{
                 fontSize:"0.78rem", color:"var(--dim)", textDecoration:"none",
-                letterSpacing:"0.05em", transition:"color 0.2s",
+                letterSpacing:"0.04em", transition:"color 0.2s",
               }}
                 onMouseEnter={e=>(e.currentTarget.style.color="var(--ink)")}
                 onMouseLeave={e=>(e.currentTarget.style.color="var(--dim)")}
@@ -278,136 +307,156 @@ export default function Page() {
       </header>
 
 
-      {/* ══════ HERO ══════ */}
-      <section style={{
-        maxWidth:1100, margin:"0 auto", padding:"80px 32px 100px",
-        display:"grid", gridTemplateColumns:"1fr 1fr", gap:60, alignItems:"center",
-      }}>
-        <div style={{animation:"fadeUp 0.9s ease both"}}>
-          <p className="mono" style={{
-            fontSize:"0.7rem", letterSpacing:"0.35em", color:"var(--red)",
-            marginBottom:24, textTransform:"uppercase",
-          }}>Japan H3 Launch Vehicle</p>
+      {/* ══ HERO ══ */}
+      <section style={{ ...S.section, paddingTop:72, paddingBottom:80 }}>
+        <div style={{ ...S.container, display:"grid", gridTemplateColumns:"1fr auto", gap:48, alignItems:"center" }}>
 
-          <h1 style={{
-            fontSize:"clamp(4rem,10vw,8rem)", fontWeight:100,
-            letterSpacing:"-0.03em", lineHeight:0.9,
-            color:"var(--ink)", marginBottom:32,
-          }}>H3</h1>
+          {/* テキスト */}
+          <div style={{ animation:"fadeUp 0.9s ease both" }}>
+            <p style={S.eyebrow}>Japan H3 Launch Vehicle</p>
 
-          <p style={{
-            fontSize:"clamp(1rem,2vw,1.2rem)", fontWeight:300,
-            lineHeight:1.75, color:"#444", marginBottom:40, maxWidth:440,
-          }}>
-            日本の次世代基幹ロケット。<br/>
-            宇宙輸送のコストを半減させ、<br/>
-            日本の技術を世界の宇宙市場へ。
-          </p>
+            <h1 style={{
+              fontSize:"clamp(4.5rem,11vw,8.5rem)", fontWeight:100,
+              letterSpacing:"-0.04em", lineHeight:0.9,
+              color:"var(--navy)", marginBottom:28,
+            }}>H3</h1>
 
-          <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
-            <a href="#story" style={{
-              padding:"11px 28px", border:"1px solid var(--ink)",
-              fontSize:"0.75rem", letterSpacing:"0.1em",
-              color:"var(--ink)", textDecoration:"none",
-              transition:"background 0.2s, color 0.2s",
-            }}
-              onMouseEnter={e=>{e.currentTarget.style.background="var(--ink)";e.currentTarget.style.color="#fff"}}
-              onMouseLeave={e=>{e.currentTarget.style.background="";e.currentTarget.style.color="var(--ink)"}}
-            >沿革を読む</a>
-            <a href="#launches" style={{
-              padding:"11px 28px", border:"1px solid var(--red)",
-              fontSize:"0.75rem", letterSpacing:"0.1em",
-              color:"var(--red)", textDecoration:"none",
-              transition:"background 0.2s, color 0.2s",
-            }}
-              onMouseEnter={e=>{e.currentTarget.style.background="var(--red)";e.currentTarget.style.color="#fff"}}
-              onMouseLeave={e=>{e.currentTarget.style.background="";e.currentTarget.style.color="var(--red)"}}
-            >打ち上げ記録</a>
-          </div>
-        </div>
-
-        <div style={{display:"flex", justifyContent:"center", animation:"fadeUp 1.1s 0.15s ease both"}}>
-          <RocketIllustration/>
-        </div>
-      </section>
-
-
-      {/* ══════ SPECS ══════ */}
-      <section style={{background:"var(--bg2)", borderTop:"1px solid var(--line)", borderBottom:"1px solid var(--line)"}}>
-        <div style={{maxWidth:1100, margin:"0 auto", padding:"0 32px",
-          display:"grid", gridTemplateColumns:"repeat(4,1fr)",
-        }}>
-          {SPECS.map(({icon,value,unit,label},i)=>(
-            <div key={i} className="reveal" style={{
-              transitionDelay:`${i*80}ms`,
-              padding:"44px 32px",
-              borderRight: i < 3 ? "1px solid var(--line)" : "none",
+            <p style={{
+              ...S.body,
+              fontSize:"clamp(1rem,1.8vw,1.15rem)",
+              maxWidth:420, marginBottom:36,
             }}>
-              <div style={{marginBottom:16}}>{icon}</div>
-              <div style={{
-                fontSize:"clamp(2rem,4vw,3rem)", fontWeight:100,
-                letterSpacing:"-0.03em", lineHeight:1, color:"var(--ink)", marginBottom:4,
-              }}>
-                {value}<span style={{fontSize:"0.45em", color:"var(--red)", marginLeft:4}}>{unit}</span>
-              </div>
-              <div className="mono" style={{fontSize:"0.68rem", color:"var(--dim)", letterSpacing:"0.1em", textTransform:"uppercase"}}>{label}</div>
+              日本の次世代基幹ロケット。<br/>
+              H-IIAの後継として、打ち上げコストの半減と<br/>
+              高い信頼性の両立を目標に開発された。
+            </p>
+
+            <div style={{ display:"flex", gap:10, flexWrap:"wrap" }}>
+              {[
+                { href:"#story", label:"沿革を読む", primary:false },
+                { href:"#launches", label:"打ち上げ記録", primary:true },
+              ].map(({href,label,primary})=>(
+                <a key={href} href={href} style={{
+                  padding:"10px 26px",
+                  border: primary ? "1.5px solid var(--tan2)" : "1.5px solid #ccc",
+                  fontSize:"0.76rem", letterSpacing:"0.08em",
+                  color: primary ? "var(--tan2)" : "#666",
+                  textDecoration:"none",
+                  borderRadius:2,
+                  transition:"background 0.2s, color 0.2s",
+                }}
+                  onMouseEnter={e=>{
+                    e.currentTarget.style.background = primary ? "#c08040" : "#111";
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.borderColor = primary ? "#c08040" : "#111";
+                  }}
+                  onMouseLeave={e=>{
+                    e.currentTarget.style.background = "";
+                    e.currentTarget.style.color = primary ? "var(--tan2)" : "#666";
+                    e.currentTarget.style.borderColor = primary ? "var(--tan2)" : "#ccc";
+                  }}
+                >{label}</a>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* ロケットイラスト */}
+          <div style={{ animation:"fadeUp 1s 0.1s ease both", display:"flex", alignItems:"center", justifyContent:"center" }}>
+            {/* 実際の画像があれば表示、なければSVGで代替 */}
+            <RocketWithFallback/>
+          </div>
         </div>
       </section>
 
 
-      {/* ══════ STORY ══════ */}
-      <section id="story" style={{scrollMarginTop:56}}>
-        <div style={{maxWidth:1100, margin:"0 auto", padding:"100px 32px"}}>
-          <div className="reveal" style={{marginBottom:64}}>
-            <p className="mono" style={{fontSize:"0.68rem", color:"var(--red)", letterSpacing:"0.3em", marginBottom:16, textTransform:"uppercase"}}>Story</p>
-            <h2 style={{fontSize:"clamp(2rem,5vw,3.5rem)", fontWeight:100, letterSpacing:"-0.02em", lineHeight:1.1}}>
-              10年間の挑戦。
-            </h2>
+      {/* ══ SPECS ══ */}
+      <section style={{ background:"var(--bg2)", borderTop:"1px solid var(--line)", borderBottom:"1px solid var(--line)" }}>
+        <div style={{ ...S.container }}>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)" }}>
+            {[
+              { v:"63",  u:"m",    l:"全高",             desc:"H-IIAより10m高く" },
+              { v:"574", u:"t",    l:"離昇重量",          desc:"H3-24L 最大構成" },
+              { v:"6.5", u:"t",    l:"GTO 投入能力",      desc:"静止トランスファ軌道" },
+              { v:"50",  u:"%",    l:"コスト削減目標",    desc:"H-IIAの約100億円から" },
+            ].map(({v,u,l,desc},i)=>(
+              <div key={i} className="reveal" style={{
+                transitionDelay:`${i*70}ms`,
+                padding:"40px 28px",
+                borderRight: i<3 ? "1px solid var(--line)" : "none",
+              }}>
+                <div style={{
+                  fontSize:"clamp(2.2rem,4vw,3rem)", fontWeight:100,
+                  letterSpacing:"-0.04em", lineHeight:1, color:"var(--navy)",
+                  marginBottom:6,
+                }}>
+                  {v}<span style={{fontSize:"0.42em", color:"var(--tan2)", marginLeft:4}}>{u}</span>
+                </div>
+                <div style={{fontSize:"0.82rem", fontWeight:500, color:"var(--ink)", marginBottom:4}}>{l}</div>
+                <div className="mono" style={{fontSize:"0.62rem", color:"var(--dim)", letterSpacing:"0.04em"}}>{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ══ STORY ══ */}
+      <section id="story" style={{...S.section, scrollMarginTop:54}}>
+        <div style={S.container}>
+          <div className="reveal" style={{marginBottom:52}}>
+            <p style={S.eyebrow}>Story</p>
+            <h2 style={S.h2}>10年間の挑戦。</h2>
           </div>
 
-          <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"start"}}>
-            {/* テキスト */}
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:72, alignItems:"start" }}>
             <div className="reveal" style={{transitionDelay:"80ms"}}>
-              <p style={{fontSize:"1rem", fontWeight:300, lineHeight:1.9, color:"#444", marginBottom:28}}>
+              <p style={{...S.body, marginBottom:20}}>
                 H3は2014年に開発が正式決定された。H-IIAの後継として、打ち上げコストの抜本的削減と高い信頼性の両立を目標に掲げた野心的プロジェクトだ。
               </p>
-              <p style={{fontSize:"1rem", fontWeight:300, lineHeight:1.9, color:"#444", marginBottom:28}}>
+              <p style={{...S.body, marginBottom:20}}>
                 だが道のりは平坦ではなかった。2023年3月、試験機1号機は第2段エンジンが着火せず、指令破壊。「だいち3号」を喪失した。
               </p>
-              <p style={{fontSize:"1rem", fontWeight:300, lineHeight:1.9, color:"#444"}}>
+              <p style={{...S.body, marginBottom:36}}>
                 それでもJAXAと三菱重工は諦めなかった。徹底的な原因究明と改良を重ね、2024年2月17日——奇しくも失敗から1年後の同じ日に——試験機2号機が初の軌道投入に成功した。
               </p>
-
-              <div style={{marginTop:40, padding:"24px 28px", background:"var(--bg2)", borderLeft:"3px solid var(--red)"}}>
-                <p style={{fontSize:"1.05rem", fontWeight:300, lineHeight:1.7, color:"#333", fontStyle:"italic"}}>
+              <div style={{
+                padding:"22px 26px",
+                background:"var(--bg2)",
+                borderLeft:"3px solid var(--tan)",
+              }}>
+                <p style={{fontSize:"1rem", fontWeight:300, lineHeight:1.75, color:"#444", fontStyle:"italic"}}>
                   "失敗はロケット開発の一部だ。<br/>諦めないことが、日本の真骨頂である。"
                 </p>
               </div>
             </div>
 
             {/* タイムライン */}
-            <div className="reveal" style={{transitionDelay:"160ms"}}>
+            <div className="reveal" style={{transitionDelay:"150ms"}}>
               {HISTORY.map((h, i) => (
                 <div key={i} style={{
-                  display:"grid", gridTemplateColumns:"16px 1fr", gap:20,
-                  marginBottom: i < HISTORY.length - 1 ? 28 : 0,
+                  display:"grid", gridTemplateColumns:"14px 1fr", gap:18, marginBottom:24,
                 }}>
-                  <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-                    <DotIcon accent={h.accent}/>
+                  <div style={{display:"flex", flexDirection:"column", alignItems:"center", paddingTop:3}}>
+                    <div style={{
+                      width:12, height:12, borderRadius:"50%", flexShrink:0,
+                      background: h.accent ? "var(--tan)" : "white",
+                      border: h.accent ? "2px solid var(--tan2)" : "2px solid #ccc",
+                    }}/>
                     {i < HISTORY.length - 1 && (
-                      <div style={{width:1, flex:1, background:"var(--line)", margin:"4px 0"}}/>
+                      <div style={{width:1, flex:1, background:"var(--line)", marginTop:4}}/>
                     )}
                   </div>
-                  <div style={{paddingBottom: i < HISTORY.length - 1 ? 0 : 0}}>
+                  <div style={{paddingBottom:4}}>
                     <p className="mono" style={{
-                      fontSize:"0.65rem", color: h.accent ? "var(--red)" : "var(--dim)",
-                      letterSpacing:"0.1em", marginBottom:5,
+                      fontSize:"0.65rem", letterSpacing:"0.1em",
+                      color: h.accent ? "var(--tan2)" : "var(--dim)",
+                      marginBottom:5,
                     }}>{h.year}</p>
                     <p style={{
-                      fontSize:"0.88rem", fontWeight: h.accent ? 400 : 300,
-                      lineHeight:1.65, color: h.accent ? "var(--ink)" : "#555",
+                      fontSize:"0.88rem",
+                      fontWeight: h.accent ? 400 : 300,
+                      lineHeight:1.7,
+                      color: h.accent ? "var(--ink)" : "#555",
                     }}>{h.text}</p>
                   </div>
                 </div>
@@ -418,32 +467,28 @@ export default function Page() {
       </section>
 
 
-      {/* ══════ TECH ══════ */}
-      <section id="tech" style={{background:"var(--bg2)", borderTop:"1px solid var(--line)", scrollMarginTop:56}}>
-        <div style={{maxWidth:1100, margin:"0 auto", padding:"100px 32px"}}>
-          <div className="reveal" style={{marginBottom:64}}>
-            <p className="mono" style={{fontSize:"0.68rem", color:"var(--red)", letterSpacing:"0.3em", marginBottom:16, textTransform:"uppercase"}}>Technology</p>
-            <h2 style={{fontSize:"clamp(2rem,5vw,3.5rem)", fontWeight:100, letterSpacing:"-0.02em", lineHeight:1.1}}>
-              技術革新の核心。
-            </h2>
+      {/* ══ TECH ══ */}
+      <section id="tech" style={{
+        ...S.section,
+        background:"var(--bg2)",
+        borderTop:"1px solid var(--line)",
+        scrollMarginTop:54,
+      }}>
+        <div style={S.container}>
+          <div className="reveal" style={{marginBottom:52}}>
+            <p style={S.eyebrow}>Technology</p>
+            <h2 style={S.h2}>技術革新の核心。</h2>
           </div>
-
-          <div style={{display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:1}}>
-            {TECH.map((t, i) => (
+          <div style={{display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:2}}>
+            {TECH.map((t,i)=>(
               <div key={i} className="reveal" style={{
-                transitionDelay:`${i*100}ms`,
-                background:"var(--bg)", padding:"40px 36px",
-                borderTop:"2px solid var(--red)",
+                transitionDelay:`${i*90}ms`,
+                background:"var(--bg)", padding:"36px 32px",
+                borderTop:"2px solid var(--tan)",
               }}>
-                <p className="mono" style={{
-                  fontSize:"0.62rem", color:"var(--red)", letterSpacing:"0.25em",
-                  marginBottom:20, textTransform:"uppercase",
-                }}>0{i+1}</p>
-                <h3 style={{
-                  fontSize:"1.15rem", fontWeight:500, marginBottom:16,
-                  letterSpacing:"0.02em", color:"var(--ink)",
-                }}>{t.title}</h3>
-                <p style={{fontSize:"0.88rem", fontWeight:300, lineHeight:1.85, color:"#555"}}>{t.body}</p>
+                <p className="mono" style={{fontSize:"0.65rem", color:"var(--tan2)", letterSpacing:"0.2em", marginBottom:16}}>{t.n}</p>
+                <h3 style={{fontSize:"1.05rem", fontWeight:500, color:"var(--navy)", marginBottom:14, letterSpacing:"0.01em"}}>{t.title}</h3>
+                <p style={{...S.body, fontSize:"0.88rem"}}>{t.body}</p>
               </div>
             ))}
           </div>
@@ -451,24 +496,22 @@ export default function Page() {
       </section>
 
 
-      {/* ══════ LAUNCHES ══════ */}
-      <section id="launches" style={{scrollMarginTop:56}}>
-        <div style={{maxWidth:1100, margin:"0 auto", padding:"100px 32px"}}>
-          <div className="reveal" style={{marginBottom:20}}>
-            <p className="mono" style={{fontSize:"0.68rem", color:"var(--red)", letterSpacing:"0.3em", marginBottom:16, textTransform:"uppercase"}}>Launch Record</p>
-            <div style={{display:"flex", alignItems:"flex-end", gap:40, flexWrap:"wrap", marginBottom:48}}>
-              <h2 style={{fontSize:"clamp(2rem,5vw,3.5rem)", fontWeight:100, letterSpacing:"-0.02em", lineHeight:1.1}}>
-                打ち上げ記録。
-              </h2>
-              <div style={{display:"flex", gap:36, paddingBottom:6}}>
+      {/* ══ LAUNCHES ══ */}
+      <section id="launches" style={{...S.section, scrollMarginTop:54}}>
+        <div style={S.container}>
+          <div className="reveal" style={{marginBottom:16}}>
+            <p style={S.eyebrow}>Launch Record</p>
+            <div style={{display:"flex", alignItems:"flex-end", gap:40, flexWrap:"wrap", marginBottom:44}}>
+              <h2 style={S.h2}>打ち上げ記録。</h2>
+              <div style={{display:"flex", gap:32, paddingBottom:4}}>
                 {[
                   {v:LAUNCHES.filter(l=>l.result==="success").length, l:"成功"},
                   {v:LAUNCHES.filter(l=>l.result==="failure").length, l:"失敗"},
                   {v:LAUNCHES.length, l:"合計"},
                 ].map(({v,l})=>(
                   <div key={l}>
-                    <div style={{fontSize:"2.4rem", fontWeight:100, lineHeight:1, letterSpacing:"-0.04em", color:"var(--ink)"}}>{v}</div>
-                    <div className="mono" style={{fontSize:"0.65rem", color:"var(--dim)", letterSpacing:"0.1em", marginTop:4}}>{l}</div>
+                    <div style={{fontSize:"2.2rem", fontWeight:100, lineHeight:1, letterSpacing:"-0.04em", color:"var(--navy)"}}>{v}</div>
+                    <div className="mono" style={{fontSize:"0.62rem", color:"var(--dim)", letterSpacing:"0.1em", marginTop:5}}>{l}</div>
                   </div>
                 ))}
               </div>
@@ -476,33 +519,31 @@ export default function Page() {
           </div>
 
           <div className="reveal" style={{borderTop:"1px solid var(--line)"}}>
-            {LAUNCHES.map((l, i) => {
-              const rs = resultStyle(l.result);
+            {LAUNCHES.map((l) => {
+              const b = resultBadge(l.result);
               return (
                 <div key={l.id} style={{
-                  display:"grid", gridTemplateColumns:"72px 1fr auto",
-                  borderBottom:"1px solid var(--line)",
-                  padding:"18px 4px", gap:20, alignItems:"center",
-                  transitionDelay:`${i*40}ms`,
-                }}>
+                  display:"grid", gridTemplateColumns:"68px 1fr auto",
+                  borderBottom:"1px solid var(--line)", padding:"16px 4px",
+                  gap:20, alignItems:"center",
+                  transition:"background 0.15s",
+                }}
+                  onMouseEnter={e=>(e.currentTarget.style.background="var(--bg2)")}
+                  onMouseLeave={e=>(e.currentTarget.style.background="")}
+                >
+                  <span className="mono" style={{fontSize:"0.65rem", color:"var(--dim)", letterSpacing:"0.08em"}}>{l.id}</span>
                   <div>
-                    <span className="mono" style={{fontSize:"0.68rem", color:"var(--dim)", letterSpacing:"0.1em"}}>{l.id}</span>
-                  </div>
-                  <div>
-                    <div style={{fontSize:"0.95rem", fontWeight:400, color:"var(--ink)", marginBottom:3}}>{l.name}</div>
-                    <div style={{display:"flex", gap:16, alignItems:"center", flexWrap:"wrap"}}>
-                      <span className="mono" style={{fontSize:"0.68rem", color:"var(--dim)"}}>{l.date}</span>
-                      <span style={{fontSize:"0.82rem", color:"#666"}}>{l.note}</span>
+                    <div style={{fontSize:"0.93rem", fontWeight:400, color:"var(--ink)", marginBottom:3}}>{l.name}</div>
+                    <div style={{display:"flex", gap:16, flexWrap:"wrap"}}>
+                      <span className="mono" style={{fontSize:"0.65rem", color:"var(--dim)"}}>{l.date}</span>
+                      <span style={{fontSize:"0.8rem", color:"#777"}}>{l.note}</span>
                     </div>
                   </div>
-                  <div>
-                    <span style={{
-                      ...rs,
-                      fontSize:"0.65rem", padding:"4px 12px",
-                      borderRadius:2, fontWeight:500,
-                      letterSpacing:"0.05em",
-                    }}>{resultLabel(l.result)}</span>
-                  </div>
+                  <span style={{
+                    fontSize:"0.65rem", padding:"4px 12px", borderRadius:2,
+                    color:b.color, background:b.bg, border:b.border,
+                    fontWeight:500, letterSpacing:"0.04em", whiteSpace:"nowrap",
+                  }}>{b.label}</span>
                 </div>
               );
             })}
@@ -511,51 +552,50 @@ export default function Page() {
       </section>
 
 
-      {/* ══════ FUTURE ══════ */}
-      <section id="future" style={{background:"var(--bg2)", borderTop:"1px solid var(--line)", scrollMarginTop:56}}>
-        <div style={{maxWidth:1100, margin:"0 auto", padding:"100px 32px"}}>
-          <div className="reveal" style={{marginBottom:64}}>
-            <p className="mono" style={{fontSize:"0.68rem", color:"var(--red)", letterSpacing:"0.3em", marginBottom:16, textTransform:"uppercase"}}>Future</p>
-            <h2 style={{fontSize:"clamp(2rem,5vw,3.5rem)", fontWeight:100, letterSpacing:"-0.02em", lineHeight:1.1}}>
-              次は、<span style={{color:"var(--red)"}}>火星</span>へ。
-            </h2>
+      {/* ══ FUTURE ══ */}
+      <section id="future" style={{
+        ...S.section,
+        background:"var(--bg2)",
+        borderTop:"1px solid var(--line)",
+        scrollMarginTop:54,
+      }}>
+        <div style={S.container}>
+          <div className="reveal" style={{marginBottom:52}}>
+            <p style={S.eyebrow}>Future</p>
+            <h2 style={S.h2}>次は、<span style={{color:"var(--red)"}}>火星</span>へ。</h2>
           </div>
 
-          <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:72, alignItems:"center"}}>
+          <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:64, alignItems:"center"}}>
             <div className="reveal" style={{transitionDelay:"80ms"}}>
-              <p style={{fontSize:"1rem", fontWeight:300, lineHeight:1.9, color:"#444", marginBottom:32}}>
+              <p style={{...S.body, marginBottom:20}}>
                 2026年、H3-24LはMMX（火星月探査機）を打ち上げる。フォボスに着陸し表面サンプルを採取、2031年に地球へ帰還——人類史上最高難度のミッションだ。
               </p>
-              <p style={{fontSize:"1rem", fontWeight:300, lineHeight:1.9, color:"#444", marginBottom:40}}>
+              <p style={{...S.body, marginBottom:36}}>
                 NASA・ESA・CNES・DLRが参加する国際プロジェクト。H3はその運搬役として日本の存在感を示す。
               </p>
-
-              <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:1}}>
+              <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:1, marginBottom:32}}>
                 {[
-                  {l:"打ち上げ",  v:"2026年後半"},
-                  {l:"目標天体",  v:"フォボス"},
-                  {l:"地球帰還",  v:"2031年"},
-                  {l:"サンプル",  v:"約 10 g"},
+                  {l:"打ち上げ",v:"2026年後半"},
+                  {l:"目標天体",v:"フォボス"},
+                  {l:"地球帰還",v:"2031年"},
+                  {l:"サンプル", v:"約 10 g"},
                 ].map(({l,v})=>(
-                  <div key={l} style={{padding:"18px 20px", background:"var(--bg)", border:"1px solid var(--line)"}}>
-                    <div className="mono" style={{fontSize:"0.62rem", color:"var(--red)", letterSpacing:"0.15em", marginBottom:6, textTransform:"uppercase"}}>{l}</div>
+                  <div key={l} style={{padding:"16px 20px", background:"var(--bg)", border:"1px solid var(--line)"}}>
+                    <div className="mono" style={{fontSize:"0.6rem", color:"var(--tan2)", letterSpacing:"0.15em", textTransform:"uppercase", marginBottom:5}}>{l}</div>
                     <div style={{fontSize:"0.9rem", fontWeight:400, color:"var(--ink)"}}>{v}</div>
                   </div>
                 ))}
               </div>
-
-              <div style={{marginTop:32}}>
-                <a href="https://www.jaxa.jp/projects/rockets/h3/" target="_blank" rel="noopener" style={{
-                  display:"inline-block",
-                  padding:"11px 28px", border:"1px solid var(--ink)",
-                  fontSize:"0.75rem", letterSpacing:"0.1em",
-                  color:"var(--ink)", textDecoration:"none",
-                  transition:"background 0.2s, color 0.2s",
-                }}
-                  onMouseEnter={e=>{e.currentTarget.style.background="var(--ink)";e.currentTarget.style.color="#fff"}}
-                  onMouseLeave={e=>{e.currentTarget.style.background="";e.currentTarget.style.color="var(--ink)"}}
-                >JAXA 公式サイト →</a>
-              </div>
+              <a href="https://www.jaxa.jp/projects/rockets/h3/" target="_blank" rel="noopener" style={{
+                display:"inline-block", padding:"10px 26px",
+                border:"1.5px solid #ccc", borderRadius:2,
+                fontSize:"0.76rem", letterSpacing:"0.08em",
+                color:"#666", textDecoration:"none",
+                transition:"all 0.2s",
+              }}
+                onMouseEnter={e=>{e.currentTarget.style.background="#111";e.currentTarget.style.color="#fff";e.currentTarget.style.borderColor="#111"}}
+                onMouseLeave={e=>{e.currentTarget.style.background="";e.currentTarget.style.color="#666";e.currentTarget.style.borderColor="#ccc"}}
+              >JAXA 公式サイト →</a>
             </div>
 
             <div className="reveal" style={{transitionDelay:"160ms"}}>
@@ -566,19 +606,45 @@ export default function Page() {
       </section>
 
 
-      {/* ══════ FOOTER ══════ */}
-      <footer style={{borderTop:"1px solid var(--line)", padding:"40px 32px"}}>
-        <div style={{maxWidth:1100, margin:"0 auto",
-          display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16}}>
-          <span className="mono" style={{fontSize:"0.9rem", letterSpacing:"0.4em", fontWeight:200, color:"var(--dim)"}}>H3</span>
-          <p className="mono" style={{fontSize:"0.65rem", color:"#bbb", letterSpacing:"0.05em", textAlign:"center"}}>
+      {/* ══ FOOTER ══ */}
+      <footer style={{borderTop:"1px solid var(--line)", padding:"36px 0"}}>
+        <div style={{
+          ...S.container,
+          display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:16,
+        }}>
+          <span className="mono" style={{fontSize:"0.85rem", letterSpacing:"0.4em", fontWeight:400, color:"var(--navy)"}}>H3</span>
+          <p className="mono" style={{fontSize:"0.62rem", color:"#bbb", letterSpacing:"0.04em", textAlign:"center"}}>
             JAXA × 三菱重工業 · 日本の次世代基幹ロケット<br/>
             本サイトはH3ロケットの非公式応援サイトです
           </p>
-          <p className="mono" style={{fontSize:"0.65rem", color:"#bbb"}}>© {new Date().getFullYear()} FAN SITE</p>
+          <p className="mono" style={{fontSize:"0.62rem", color:"#bbb"}}>© {new Date().getFullYear()} FAN SITE</p>
         </div>
       </footer>
 
+    </div>
+  );
+}
+
+/** 画像があれば表示、なければSVGフォールバック */
+function RocketWithFallback() {
+  return (
+    <div style={{ position:"relative", width:200, height:540 }}>
+      <Image
+        src="/images/rocket-illust.png"
+        alt="H3ロケット"
+        fill
+        style={{ objectFit:"contain", objectPosition:"center" }}
+        onError={(e) => {
+          // 画像がなければ非表示にしてSVGを表示
+          const target = e.currentTarget as HTMLImageElement;
+          target.style.display = "none";
+          const svg = target.nextSibling as HTMLElement;
+          if (svg) svg.style.display = "flex";
+        }}
+      />
+      <div style={{ display:"flex", justifyContent:"center", alignItems:"center", width:"100%", height:"100%" }}>
+        <RocketSVG/>
+      </div>
     </div>
   );
 }
